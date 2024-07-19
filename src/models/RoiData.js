@@ -8,7 +8,7 @@ const RoiDataSchema = new mongoose.Schema({
   month: String,
   week: String,
   day: String,
-  amt: Number, // New field to store the calculated ROI
+  amt: Number, 
 });
 
 const RoiData = mongoose.model('RoiData', RoiDataSchema);

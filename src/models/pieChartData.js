@@ -1,4 +1,4 @@
-const mongoose =require('mongoose');
+const mongoose = require('mongoose');
 
 const dataSchema = new mongoose.Schema({
   platform: String,
@@ -10,5 +10,5 @@ const dataSchema = new mongoose.Schema({
   day: String, // Add this field to store the day of the week
 });
 
-const NewData = mongoose.model('Data', dataSchema);
+const NewData = mongoose.model('NewData', dataSchema);
 module.exports = NewData;

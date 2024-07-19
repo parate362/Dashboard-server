@@ -19,8 +19,17 @@ mongoose.connect(process.env.mongoURI)
 
 // Middleware
 app.use(express.json()); // Parse JSON requests
-app.use(cors()); // Enable CORS for all origins, adjust options as needed
+const allowedOrigins = ["http://localhost:3000","https://dashboard-client-plum.vercel.app"];
 
+app.use(cors({
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 
 fs.readdirSync(path.join(__dirname,'/src/routes/')).forEach(function(fileName) {
   if(fileName === 'index.js' || fileName.substr(fileName.lastIndexOf('.')) !== 'js'){
